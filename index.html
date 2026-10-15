@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise - Mục tiêu tiết kiệm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <h1>SpendWise</h1>
+                <p>USER</p>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#">Tổng quan</a>
+                <a href="#">Giao dịch</a>
+                <a href="#" class="active">Mục tiêu tiết kiệm</a>
+                <a href="#">Thông báo</a>
+                <a href="#">Hồ sơ</a>
+                <a href="#">Cài đặt</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button class="menu-button" id="menuButton" type="button">☰</button>
+                <h2>Mục tiêu tiết kiệm</h2>
+
+                <div class="topbar-actions">
+                    <input type="search" id="quickSearch" placeholder="Tìm kiếm nhanh...">
+                    <span class="avatar">US</span>
+                </div>
+            </header>
+
+            <section class="summary-grid">
+                <article class="summary-card">
+                    <strong id="totalGoals">0</strong>
+                    <span>Mục tiêu</span>
+                </article>
+                <article class="summary-card">
+                    <strong id="totalSaved">0 đ</strong>
+                    <span>Đã tích lũy</span>
+                </article>
+                <article class="summary-card">
+                    <strong id="averageProgress">0%</strong>
+                    <span>Tiến độ chung</span>
+                </article>
+                <article class="summary-card">
+                    <strong id="monthlyNeed">0 đ</strong>
+                    <span>Cần góp tháng này</span>
+                </article>
+            </section>
+
+            <section class="goal-section">
+                <div class="section-heading">
+                    <div>
+                        <h3>AI Goal Coach • Lộ trình đề xuất</h3>
+                        <p>Theo dõi mục tiêu và nhận gợi ý tiết kiệm đơn giản.</p>
+                    </div>
+
+                    <div class="section-actions">
+                        <select id="statusFilter">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="doing">Đang thực hiện</option>
+                            <option value="done">Hoàn tất</option>
+                            <option value="late">Quá hạn</option>
+                        </select>
+                        <button class="primary-button" id="openAddModal" type="button">+ Thêm mới</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mục tiêu</th>
+                                <th>Tiến độ</th>
+                                <th>Kỳ hạn</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="goalTableBody"></tbody>
+                    </table>
+                    <p class="empty-message" id="emptyMessage">Chưa có mục tiêu nào. Hãy bấm “+ Thêm mới”.</p>
+                </div>
+            </section>
+
+            <section class="coach-section">
+                <h3>Gợi ý Goal Coach</h3>
+                <p id="coachText">Chọn “AI Coach” ở một mục tiêu để xem gợi ý.</p>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="goalModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modalTitle">Thêm mục tiêu</h3>
+                <button class="icon-button" id="closeModal" type="button">×</button>
+            </div>
+
+            <form id="goalForm">
+                <input type="hidden" id="goalId">
+
+                <label for="goalName">Tên mục tiêu</label>
+                <input type="text" id="goalName" placeholder="Ví dụ: Mua laptop">
+
+                <label for="targetAmount">Số tiền mục tiêu</label>
+                <input type="number" id="targetAmount" min="1" placeholder="Ví dụ: 20000000">
+
+                <label for="savedAmount">Đã tiết kiệm</label>
+                <input type="number" id="savedAmount" min="0" placeholder="Ví dụ: 5000000">
+
+                <label for="deadline">Kỳ hạn</label>
+                <input type="date" id="deadline">
+
+                <p class="form-message" id="formMessage"></p>
+                <div class="form-actions">
+                    <button class="secondary-button" id="cancelModal" type="button">Hủy</button>
+                    <button class="primary-button" type="submit">Lưu mục tiêu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="contributeModal">
+        <div class="modal-box small-modal">
+            <div class="modal-header">
+                <h3>Góp thêm tiền</h3>
+                <button class="icon-button" id="closeContribute" type="button">×</button>
+            </div>
+
+            <form id="contributeForm">
+                <input type="hidden" id="contributeGoalId">
+                <label for="contributeAmount">Số tiền muốn góp thêm</label>
+                <input type="number" id="contributeAmount" min="1" placeholder="Ví dụ: 500000">
+                <p class="form-message" id="contributeMessage"></p>
+
+                <div class="form-actions">
+                    <button class="secondary-button" id="cancelContribute" type="button">Hủy</button>
+                    <button class="primary-button" type="submit">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
