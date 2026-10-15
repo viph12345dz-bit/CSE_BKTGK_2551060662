@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise - Mục tiêu tiết kiệm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <div>
+                <p class="brand">SpendWise</p>
+                <h1>Mục tiêu tiết kiệm</h1>
+            </div>
+            <input id="search" type="search" placeholder="Tìm kiếm mục tiêu...">
+        </header>
+
+        <section class="summary">
+            <article><b id="count">0</b><span>Mục tiêu</span></article>
+            <article><b id="savedTotal">0 đ</b><span>Đã tích lũy</span></article>
+            <article><b id="progressTotal">0%</b><span>Tiến độ chung</span></article>
+            <article><b id="monthlyTotal">0 đ</b><span>Cần góp tháng này</span></article>
+        </section>
+
+        <section class="goals">
+            <div class="toolbar">
+                <div>
+                    <h2>AI Goal Coach • Lộ trình đề xuất</h2>
+                    <p>Quản lý mục tiêu và nhận gợi ý tiết kiệm.</p>
+                </div>
+
+                <div class="actions">
+                    <select id="filter">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="doing">Đang thực hiện</option>
+                        <option value="done">Hoàn tất</option>
+                        <option value="late">Quá hạn</option>
+                    </select>
+                    <button id="add" class="primary">+ Thêm mới</button>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mục tiêu</th>
+                            <th>Tiến độ</th>
+                            <th>Kỳ hạn</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list"></tbody>
+                </table>
+                <p id="empty" class="empty">Chưa có mục tiêu phù hợp.</p>
+            </div>
+        </section>
+
+        <section class="coach">
+            <h2>Gợi ý Goal Coach</h2>
+            <p id="coachText">Bấm “AI Coach” ở một mục tiêu để xem gợi ý.</p>
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <form id="form">
+            <div class="modal-head">
+                <h2 id="formTitle">Thêm mục tiêu</h2>
+                <button id="close" type="button">×</button>
+            </div>
+
+            <input id="id" type="hidden">
+
+            <label>Tên mục tiêu</label>
+            <input id="name" type="text" placeholder="Ví dụ: Mua laptop">
+
+            <label>Số tiền mục tiêu</label>
+            <input id="target" type="number" min="1" placeholder="20000000">
+
+            <label>Đã tiết kiệm</label>
+            <input id="saved" type="number" min="0" placeholder="5000000">
+
+            <label>Kỳ hạn</label>
+            <input id="deadline" type="date">
+
+            <p id="message" class="error"></p>
+
+            <div class="form-actions">
+                <button id="cancel" type="button">Hủy</button>
+                <button class="primary" type="submit">Lưu</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
